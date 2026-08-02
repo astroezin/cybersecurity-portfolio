@@ -1,49 +1,107 @@
 #!/usr/bin/env python3
 
+import argparse
 import socket
 import sys
 
 
-def scan_port(host, port):
-    """Scan a single TCP port."""
-
+def get_service_name(port):
+    """
+    Return the common service name for a port.
+    """
     try:
-        with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
-            s.settimeout(1)
+        return socket.getservbyport(port)
+    except OSError:
+        return "Unknown"
 
-            result = s.connect_ex((host, port))
+
+def scan_port(host, port, timeout=1):
+    """
+    Scan a single TCP port.
+    """
+    try:
+        with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as sock:
+            sock.settimeout(timeout)
+
+            result = sock.connect_ex((host, port))
+
+            service = get_service_name(port)
 
             if result == 0:
-                print(f"[+] Port {port} is OPEN")
+                print(f"[OPEN ] {port:<5} {service}")
             else:
-                print(f"[-] Port {port} is CLOSED")
+                print(f"[CLOSED] {port:<5} {service}")
 
     except KeyboardInterrupt:
-        print("\nScan cancelled.")
-        sys.exit()
+        print("\nScan interrupted.")
+        sys.exit(1)
 
     except socket.gaierror:
         print("Hostname could not be resolved.")
-        sys.exit()
+        sys.exit(1)
 
     except Exception as e:
-        print(f"Error: {e}")
+        print(f"Error scanning port {port}: {e}")
+
+
+def parse_ports(port_argument):
+    """
+    Convert user input into a list of ports.
+
+    Supported:
+        80
+        22,80,443
+        20-25
+    """
+
+    ports = []
+
+    if "-" in port_argument:
+        start, end = port_argument.split("-")
+
+        ports.extend(range(int(start), int(end) + 1))
+
+    elif "," in port_argument:
+        ports.extend(int(p.strip()) for p in port_argument.split(","))
+
+    else:
+        ports.append(int(port_argument))
+
+    return ports
+
+
+def scan_host(host, ports):
+    """
+    Scan all requested ports.
+    """
+    print("=" * 45)
+    print(f"Scanning Host : {host}")
+    print("=" * 45)
+
+    for port in ports:
+        scan_port(host, port)
 
 
 def main():
-    if len(sys.argv) < 3:
-        print("Usage:")
-        print("python3 scanner.py <host> <port1> [port2 port3 ...]")
-        sys.exit()
+    parser = argparse.ArgumentParser(
+        description="Simple Python TCP Port Scanner"
+    )
 
-    host = sys.argv[1]
+    parser.add_argument(
+        "host",
+        help="Target hostname or IP address"
+    )
 
-    print("=" * 40)
-    print(f"Scanning {host}")
-    print("=" * 40)
+    parser.add_argument(
+        "ports",
+        help="Port(s): 80 | 22,80,443 | 20-100"
+    )
 
-    for port in sys.argv[2:]:
-        scan_port(host, int(port))
+    args = parser.parse_args()
+
+    ports = parse_ports(args.ports)
+
+    scan_host(args.host, ports)
 
 
 if __name__ == "__main__":
