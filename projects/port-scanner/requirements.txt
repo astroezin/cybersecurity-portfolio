@@ -1,0 +1,5 @@
+# No external dependencies required.
+# Python 3.x only.
+socket
+sys
+
