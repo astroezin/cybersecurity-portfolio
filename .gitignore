@@ -1,0 +1,12 @@
+__pycache__/
+*.pyc
+*.log
+*.zip
+*.7z
+*.rar
+*.exe
+*.dll
+.env
+.vscode/
+.idea/
+*.swp
