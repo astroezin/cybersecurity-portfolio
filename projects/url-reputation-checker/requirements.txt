@@ -1,0 +1,10 @@
+# No external dependencies required
+#
+# Python Standard Library:
+# - argparse
+# - json
+# - socket
+# - pathlib
+# - urllib.parse
+# - ipaddress
+# - datetime
