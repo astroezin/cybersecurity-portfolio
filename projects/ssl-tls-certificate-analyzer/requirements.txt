@@ -1,0 +1,9 @@
+# No external dependencies required
+#
+# Python Standard Library:
+# - argparse
+# - ssl
+# - socket
+# - json
+# - pathlib
+# - datetime
