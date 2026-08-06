@@ -1,0 +1,11 @@
+__pycache__/
+*.pyc
+
+venv/
+
+.env
+
+logs/*.log
+
+reports/*.json
+reports/*.md
