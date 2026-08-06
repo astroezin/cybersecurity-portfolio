@@ -1,0 +1,27 @@
+{
+    "report_title": "Web Security Assessment",
+    "target": "https://example.com",
+    "assessment_date": "2026-08-06",
+    "assessor": "Rejin Lama",
+
+    "findings": [
+        {
+            "title": "Missing Content Security Policy",
+            "severity": "High",
+            "description": "The application does not implement a Content-Security-Policy header.",
+            "recommendation": "Configure a strict Content-Security-Policy header."
+        },
+        {
+            "title": "Missing X-Frame-Options Header",
+            "severity": "Medium",
+            "description": "The application can potentially be embedded in external websites.",
+            "recommendation": "Set the X-Frame-Options header to DENY or SAMEORIGIN."
+        },
+        {
+            "title": "Directory Listing Enabled",
+            "severity": "Low",
+            "description": "Directory indexing is enabled on one or more paths.",
+            "recommendation": "Disable directory indexing on the web server."
+        }
+    ]
+}
