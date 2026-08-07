@@ -1,0 +1,22 @@
+[
+    {
+        "destination": "8.8.8.8",
+        "port": 443,
+        "process": "chrome.exe"
+    },
+    {
+        "destination": "185.220.101.25",
+        "port": 4444,
+        "process": "powershell.exe"
+    },
+    {
+        "destination": "10.0.2.15",
+        "port": 22,
+        "process": "ssh.exe"
+    },
+    {
+        "destination": "203.0.113.50",
+        "port": 8080,
+        "process": "unknown.exe"
+    }
+]

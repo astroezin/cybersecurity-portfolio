@@ -1,0 +1,17 @@
+[
+    {
+        "name": "Windows Update Helper",
+        "location": "HKCU\\Software\\Microsoft\\Windows\\CurrentVersion\\Run",
+        "command": "C:\\Users\\admin\\AppData\\update.ps1"
+    },
+    {
+        "name": "OneDrive",
+        "location": "Startup Folder",
+        "command": "C:\\Program Files\\OneDrive\\OneDrive.exe"
+    },
+    {
+        "name": "System Monitor",
+        "location": "HKLM\\Software\\Microsoft\\Windows\\CurrentVersion\\Run",
+        "command": "C:\\Users\\admin\\Downloads\\monitor.exe"
+    }
+]

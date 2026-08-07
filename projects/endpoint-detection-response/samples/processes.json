@@ -1,0 +1,22 @@
+[
+    {
+        "name": "explorer.exe",
+        "command": "C:\\Windows\\explorer.exe",
+        "user": "user"
+    },
+    {
+        "name": "powershell.exe",
+        "command": "powershell.exe -enc aW52b2tlLXdlYnJlcXVlc3Q=",
+        "user": "admin"
+    },
+    {
+        "name": "cmd.exe",
+        "command": "cmd.exe /c whoami",
+        "user": "admin"
+    },
+    {
+        "name": "chrome.exe",
+        "command": "C:\\Program Files\\Chrome\\chrome.exe",
+        "user": "user"
+    }
+]
