@@ -1,0 +1,99 @@
+[
+    {
+        "alert_id": "ALERT-20260807-0001",
+        "title": "Possible SSH Brute Force",
+        "severity": "Critical",
+        "status": "New",
+        "source": "Auth Log",
+        "source_ip": "192.168.1.50",
+        "destination_ip": "10.0.2.15",
+        "username": "admin",
+        "rule": "Multiple Failed SSH Logins",
+        "mitre": [
+            "T1110"
+        ],
+        "timestamp": "2026-08-07T09:15:22",
+        "description": "Five failed SSH login attempts followed by a successful login."
+    },
+    {
+        "alert_id": "ALERT-20260807-0002",
+        "title": "Privilege Escalation Detected",
+        "severity": "High",
+        "status": "Investigating",
+        "source": "Linux Audit",
+        "source_ip": "192.168.1.50",
+        "destination_ip": "10.0.2.15",
+        "username": "admin",
+        "rule": "Sudo Execution",
+        "mitre": [
+            "T1548"
+        ],
+        "timestamp": "2026-08-07T09:17:40",
+        "description": "User executed a privileged shell using sudo."
+    },
+    {
+        "alert_id": "ALERT-20260807-0003",
+        "title": "Suspicious PowerShell Activity",
+        "severity": "High",
+        "status": "New",
+        "source": "Endpoint",
+        "source_ip": "10.10.20.15",
+        "destination_ip": "104.26.10.78",
+        "username": "john",
+        "rule": "Encoded PowerShell",
+        "mitre": [
+            "T1059.001"
+        ],
+        "timestamp": "2026-08-07T09:25:10",
+        "description": "Encoded PowerShell command executed on workstation."
+    },
+    {
+        "alert_id": "ALERT-20260807-0004",
+        "title": "Malicious URL Access",
+        "severity": "Medium",
+        "status": "Closed",
+        "source": "Web Proxy",
+        "source_ip": "10.10.20.22",
+        "destination_ip": "203.0.113.50",
+        "username": "alice",
+        "rule": "Threat Intelligence Match",
+        "mitre": [
+            "T1204"
+        ],
+        "timestamp": "2026-08-07T09:31:05",
+        "description": "User attempted to access a URL flagged by threat intelligence."
+    },
+    {
+        "alert_id": "ALERT-20260807-0005",
+        "title": "Known Malware Hash Detected",
+        "severity": "Critical",
+        "status": "Investigating",
+        "source": "EDR",
+        "source_ip": "10.10.20.33",
+        "destination_ip": "10.10.20.33",
+        "username": "system",
+        "rule": "Malware Signature",
+        "mitre": [
+            "T1204",
+            "T1105"
+        ],
+        "timestamp": "2026-08-07T09:45:18",
+        "description": "Endpoint detected a file matching a known malware signature."
+    },
+    {
+        "alert_id": "ALERT-20260807-0006",
+        "title": "Port Scan Detected",
+        "severity": "Low",
+        "status": "Closed",
+        "source": "IDS",
+        "source_ip": "172.16.1.100",
+        "destination_ip": "10.0.2.15",
+        "username": "N/A",
+        "rule": "Network Scan",
+        "mitre": [
+            "T1046"
+        ],
+        "timestamp": "2026-08-07T10:02:44",
+        "description": "Sequential TCP connection attempts detected against multiple ports."
+    }
+]

@@ -1,0 +1,210 @@
+{% extends "layout.html" %}
+
+{% block content %}
+
+<div class="d-flex justify-content-between align-items-center mb-4">
+
+    <h2>
+        Alert Details
+    </h2>
+
+    <a
+        href="/"
+        class="btn btn-secondary"
+    >
+        ← Back to Dashboard
+    </a>
+
+</div>
+
+<div class="card shadow mb-4">
+
+    <div class="card-header">
+
+        <strong>
+            {{ alert.title }}
+        </strong>
+
+    </div>
+
+    <div class="card-body">
+
+        <table class="table table-bordered">
+
+            <tbody>
+
+                <tr>
+
+                    <th width="220">
+                        Alert ID
+                    </th>
+
+                    <td>
+                        {{ alert.alert_id }}
+                    </td>
+
+                </tr>
+
+                <tr>
+
+                    <th>
+                        Severity
+                    </th>
+
+                    <td>
+
+                        {% if alert.severity == "Critical" %}
+
+                            <span class="badge bg-danger">
+                                {{ alert.severity }}
+                            </span>
+
+                        {% elif alert.severity == "High" %}
+
+                            <span class="badge bg-warning text-dark">
+                                {{ alert.severity }}
+                            </span>
+
+                        {% elif alert.severity == "Medium" %}
+
+                            <span class="badge bg-primary">
+                                {{ alert.severity }}
+                            </span>
+
+                        {% else %}
+
+                            <span class="badge bg-success">
+                                {{ alert.severity }}
+                            </span>
+
+                        {% endif %}
+
+                    </td>
+
+                </tr>
+
+                <tr>
+
+                    <th>
+                        Status
+                    </th>
+
+                    <td>
+                        {{ alert.status }}
+                    </td>
+
+                </tr>
+
+                <tr>
+
+                    <th>
+                        Rule
+                    </th>
+
+                    <td>
+                        {{ alert.rule }}
+                    </td>
+
+                </tr>
+
+                <tr>
+
+                    <th>
+                        Source
+                    </th>
+
+                    <td>
+                        {{ alert.source }}
+                    </td>
+
+                </tr>
+
+                <tr>
+
+                    <th>
+                        Username
+                    </th>
+
+                    <td>
+                        {{ alert.username }}
+                    </td>
+
+                </tr>
+
+                <tr>
+
+                    <th>
+                        Source IP
+                    </th>
+
+                    <td>
+                        {{ alert.source_ip }}
+                    </td>
+
+                </tr>
+
+                <tr>
+
+                    <th>
+                        Destination IP
+                    </th>
+
+                    <td>
+                        {{ alert.destination_ip }}
+                    </td>
+
+                </tr>
+
+                <tr>
+
+                    <th>
+                        MITRE ATT&CK
+                    </th>
+
+                    <td>
+
+                        {% for technique in alert.mitre %}
+
+                            <span class="badge bg-dark me-1">
+                                {{ technique }}
+                            </span>
+
+                        {% endfor %}
+
+                    </td>
+
+                </tr>
+
+                <tr>
+
+                    <th>
+                        Timestamp
+                    </th>
+
+                    <td>
+                        {{ alert.timestamp }}
+                    </td>
+
+                </tr>
+
+                <tr>
+
+                    <th>
+                        Description
+                    </th>
+
+                    <td>
+                        {{ alert.description }}
+                    </td>
+
+                </tr>
+
+            </tbody>
+
+        </table>
+
+    </div>
+
+</div>
+
+{% endblock %}

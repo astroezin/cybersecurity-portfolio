@@ -1,0 +1,124 @@
+body {
+    background-color: #f4f6f9;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.navbar-brand {
+    font-weight: 700;
+    letter-spacing: 0.5px;
+}
+
+.card {
+    border: none;
+    border-radius: 12px;
+}
+
+.card-header {
+    font-weight: 600;
+}
+
+.table {
+    margin-bottom: 0;
+}
+
+.table th {
+    vertical-align: middle;
+}
+
+.table td {
+    vertical-align: middle;
+}
+
+.badge {
+    font-size: 0.85rem;
+    padding: 0.45rem 0.75rem;
+}
+
+.btn {
+    border-radius: 8px;
+}
+
+.shadow {
+    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.1) !important;
+}
+
+h2 {
+    font-weight: 700;
+}
+
+.card h2,
+.card h4 {
+    margin-bottom: 0;
+    font-weight: 700;
+}
+
+.card p {
+    margin-bottom: 0;
+    color: #6c757d;
+}
+
+.table-hover tbody tr:hover {
+    background-color: rgba(13, 110, 253, 0.08);
+}
+
+.table-striped > tbody > tr:nth-of-type(odd) > * {
+    background-color: rgba(0, 0, 0, 0.02);
+}
+
+code {
+    color: #dc3545;
+}
+
+footer {
+    margin-top: 40px;
+    padding: 20px;
+    text-align: center;
+    color: #6c757d;
+    font-size: 0.9rem;
+}
+
+.alert-card {
+    transition: transform 0.2s ease;
+}
+
+.alert-card:hover {
+    transform: translateY(-3px);
+}
+
+.status-new {
+    color: #dc3545;
+    font-weight: bold;
+}
+
+.status-investigating {
+    color: #fd7e14;
+    font-weight: bold;
+}
+
+.status-closed {
+    color: #198754;
+    font-weight: bold;
+}
+
+.table-responsive {
+    overflow-x: auto;
+}
+
+@media (max-width: 768px) {
+
+    h2 {
+        font-size: 1.5rem;
+    }
+
+    .table {
+        font-size: 0.9rem;
+    }
+
+    .card-body h2 {
+        font-size: 1.8rem;
+    }
+
+    .navbar-brand {
+        font-size: 1rem;
+    }
+}

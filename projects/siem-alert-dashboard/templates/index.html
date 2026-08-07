@@ -1,0 +1,218 @@
+{% extends "layout.html" %}
+
+{% block content %}
+
+<h2 class="mb-4">
+    Dashboard
+</h2>
+
+<div class="row">
+
+    <div class="col-md-3 mb-3">
+
+        <div class="card text-bg-primary shadow">
+
+            <div class="card-body">
+
+                <h6>Total Alerts</h6>
+
+                <h2>{{ stats.total_alerts }}</h2>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <div class="col-md-3 mb-3">
+
+        <div class="card text-bg-danger shadow">
+
+            <div class="card-body">
+
+                <h6>Critical</h6>
+
+                <h2>{{ stats.severity.get("Critical", 0) }}</h2>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <div class="col-md-3 mb-3">
+
+        <div class="card text-bg-warning shadow">
+
+            <div class="card-body">
+
+                <h6>High</h6>
+
+                <h2>{{ stats.severity.get("High", 0) }}</h2>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <div class="col-md-3 mb-3">
+
+        <div class="card text-bg-success shadow">
+
+            <div class="card-body">
+
+                <h6>Medium + Low</h6>
+
+                <h2>{{ stats.severity.get("Medium", 0) + stats.severity.get("Low", 0) }}</h2>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<div class="card shadow mt-4">
+
+    <div class="card-header">
+
+        <strong>
+            Recent Alerts
+        </strong>
+
+    </div>
+
+    <div class="card-body p-0">
+
+        <table class="table table-hover table-striped mb-0">
+
+            <thead class="table-dark">
+
+                <tr>
+
+                    <th>ID</th>
+
+                    <th>Severity</th>
+
+                    <th>Title</th>
+
+                    <th>User</th>
+
+                    <th>Source IP</th>
+
+                    <th>MITRE</th>
+
+                    <th>Status</th>
+
+                    <th>Time</th>
+
+                    <th></th>
+
+                </tr>
+
+            </thead>
+
+            <tbody>
+
+            {% for alert in alerts %}
+
+                <tr>
+
+                    <td>
+
+                        {{ alert.alert_id }}
+
+                    </td>
+
+                    <td>
+
+                        {% if alert.severity == "Critical" %}
+
+                            <span class="badge bg-danger">
+                                {{ alert.severity }}
+                            </span>
+
+                        {% elif alert.severity == "High" %}
+
+                            <span class="badge bg-warning text-dark">
+                                {{ alert.severity }}
+                            </span>
+
+                        {% elif alert.severity == "Medium" %}
+
+                            <span class="badge bg-primary">
+                                {{ alert.severity }}
+                            </span>
+
+                        {% else %}
+
+                            <span class="badge bg-success">
+                                {{ alert.severity }}
+                            </span>
+
+                        {% endif %}
+
+                    </td>
+
+                    <td>
+
+                        {{ alert.title }}
+
+                    </td>
+
+                    <td>
+
+                        {{ alert.username }}
+
+                    </td>
+
+                    <td>
+
+                        {{ alert.source_ip }}
+
+                    </td>
+
+                    <td>
+
+                        {{ alert.mitre | join(", ") }}
+
+                    </td>
+
+                    <td>
+
+                        {{ alert.status }}
+
+                    </td>
+
+                    <td>
+
+                        {{ alert.timestamp }}
+
+                    </td>
+
+                    <td>
+
+                        <a
+                            class="btn btn-sm btn-outline-primary"
+                            href="/alert/{{ alert.alert_id }}"
+                        >
+                            View
+                        </a>
+
+                    </td>
+
+                </tr>
+
+            {% endfor %}
+
+            </tbody>
+
+        </table>
+
+    </div>
+
+</div>
+
+{% endblock %}

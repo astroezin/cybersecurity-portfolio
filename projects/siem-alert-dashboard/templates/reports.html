@@ -1,0 +1,274 @@
+{% extends "layout.html" %}
+
+{% block content %}
+
+<div class="d-flex justify-content-between align-items-center mb-4">
+
+    <h2>
+        Dashboard Reports
+    </h2>
+
+    <a
+        href="/"
+        class="btn btn-secondary"
+    >
+        ← Back to Dashboard
+    </a>
+
+</div>
+
+<div class="row g-4">
+
+    <div class="col-lg-6">
+
+        <div class="card shadow h-100">
+
+            <div class="card-header bg-primary text-white">
+
+                Alert Severity Summary
+
+            </div>
+
+            <div class="card-body">
+
+                <table class="table table-striped">
+
+                    <thead>
+
+                        <tr>
+
+                            <th>Severity</th>
+                            <th>Count</th>
+
+                        </tr>
+
+                    </thead>
+
+                    <tbody>
+
+                    {% for severity, count in stats.severity.items() %}
+
+                        <tr>
+
+                            <td>{{ severity }}</td>
+
+                            <td>{{ count }}</td>
+
+                        </tr>
+
+                    {% endfor %}
+
+                    </tbody>
+
+                </table>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <div class="col-lg-6">
+
+        <div class="card shadow h-100">
+
+            <div class="card-header bg-success text-white">
+
+                Alert Status Summary
+
+            </div>
+
+            <div class="card-body">
+
+                <table class="table table-striped">
+
+                    <thead>
+
+                        <tr>
+
+                            <th>Status</th>
+                            <th>Count</th>
+
+                        </tr>
+
+                    </thead>
+
+                    <tbody>
+
+                    {% for status, count in stats.status.items() %}
+
+                        <tr>
+
+                            <td>{{ status }}</td>
+
+                            <td>{{ count }}</td>
+
+                        </tr>
+
+                    {% endfor %}
+
+                    </tbody>
+
+                </table>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<div class="row g-4 mt-2">
+
+    <div class="col-lg-6">
+
+        <div class="card shadow h-100">
+
+            <div class="card-header bg-warning">
+
+                Alert Sources
+
+            </div>
+
+            <div class="card-body">
+
+                <table class="table table-striped">
+
+                    <thead>
+
+                        <tr>
+
+                            <th>Source</th>
+                            <th>Count</th>
+
+                        </tr>
+
+                    </thead>
+
+                    <tbody>
+
+                    {% for source, count in stats.sources.items() %}
+
+                        <tr>
+
+                            <td>{{ source }}</td>
+
+                            <td>{{ count }}</td>
+
+                        </tr>
+
+                    {% endfor %}
+
+                    </tbody>
+
+                </table>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <div class="col-lg-6">
+
+        <div class="card shadow h-100">
+
+            <div class="card-header bg-dark text-white">
+
+                MITRE ATT&CK Techniques
+
+            </div>
+
+            <div class="card-body">
+
+                <table class="table table-striped">
+
+                    <thead>
+
+                        <tr>
+
+                            <th>Technique</th>
+                            <th>Occurrences</th>
+
+                        </tr>
+
+                    </thead>
+
+                    <tbody>
+
+                    {% for technique, count in stats.mitre.items() %}
+
+                        <tr>
+
+                            <td>{{ technique }}</td>
+
+                            <td>{{ count }}</td>
+
+                        </tr>
+
+                    {% endfor %}
+
+                    </tbody>
+
+                </table>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<div class="card shadow mt-4">
+
+    <div class="card-header">
+
+        Report Summary
+
+    </div>
+
+    <div class="card-body">
+
+        <div class="row text-center">
+
+            <div class="col-md-3">
+
+                <h4>{{ stats.total_alerts }}</h4>
+
+                <p>Total Alerts</p>
+
+            </div>
+
+            <div class="col-md-3">
+
+                <h4>{{ stats.severity.get("Critical", 0) }}</h4>
+
+                <p>Critical Alerts</p>
+
+            </div>
+
+            <div class="col-md-3">
+
+                <h4>{{ stats.severity.get("High", 0) }}</h4>
+
+                <p>High Alerts</p>
+
+            </div>
+
+            <div class="col-md-3">
+
+                <h4>{{ stats.mitre|length }}</h4>
+
+                <p>MITRE Techniques</p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+{% endblock %}
