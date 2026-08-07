@@ -1,0 +1,110 @@
+{
+    "case_information": {
+        "case_id": "CASE-20260807-86dfcd1e",
+        "created": "2026-08-07T00:56:44.190443"
+    },
+    "network_summary": {
+        "total_packets": 7,
+        "statistics": {
+            "total_packets": 7,
+            "protocols": {
+                "IP": 7
+            },
+            "top_sources": {
+                "192.168.1.50": 5,
+                "192.168.1.60": 1,
+                "192.168.1.70": 1
+            },
+            "top_destinations": {
+                "10.0.2.15": 5,
+                "10.0.2.20": 1,
+                "8.8.8.8": 1
+            },
+            "packet_size": {
+                "minimum": 40,
+                "maximum": 102,
+                "average": 52.71
+            },
+            "alert_summary": {
+                "LOW": 1
+            }
+        }
+    },
+    "security_alerts": [
+        {
+            "alert_type": "HTTP_ACTIVITY",
+            "severity": "LOW",
+            "description": "Suspicious HTTP user agent detected",
+            "source_ip": "192.168.1.60",
+            "destination_ip": "10.0.2.20",
+            "user_agent": "sqlmap",
+            "timestamp": "2026-08-07T00:56:29.501483",
+            "mitre": [
+                "T1071.001 - Web Protocols"
+            ]
+        }
+    ],
+    "indicators_of_compromise": {
+        "ip_addresses": [
+            "10.0.2.15",
+            "10.0.2.20",
+            "192.168.1.50",
+            "192.168.1.60",
+            "192.168.1.70",
+            "8.8.8.8"
+        ],
+        "domains": [
+            "example.com",
+            "malicious-example.com"
+        ]
+    },
+    "timeline": {
+        "summary": {
+            "first_event": "2026-08-07T00:56:29.500282",
+            "last_event": "2026-08-07T00:56:29.501947",
+            "total_events": 7
+        },
+        "events": [
+            {
+                "event_id": 1,
+                "timestamp": "2026-08-07T00:56:29.500282",
+                "packet_length": 40
+            },
+            {
+                "event_id": 2,
+                "timestamp": "2026-08-07T00:56:29.500703",
+                "packet_length": 40
+            },
+            {
+                "event_id": 3,
+                "timestamp": "2026-08-07T00:56:29.500875",
+                "packet_length": 40
+            },
+            {
+                "event_id": 4,
+                "timestamp": "2026-08-07T00:56:29.501028",
+                "packet_length": 40
+            },
+            {
+                "event_id": 5,
+                "timestamp": "2026-08-07T00:56:29.501191",
+                "packet_length": 40
+            },
+            {
+                "event_id": 6,
+                "timestamp": "2026-08-07T00:56:29.501483",
+                "packet_length": 102
+            },
+            {
+                "event_id": 7,
+                "timestamp": "2026-08-07T00:56:29.501947",
+                "packet_length": 67
+            }
+        ]
+    },
+    "capture_information": {
+        "total_packets": 7,
+        "first_packet": "1786078589.500282",
+        "last_packet": "1786078589.501947"
+    }
+}
