@@ -1,0 +1,32 @@
+[
+    {
+        "alert_id": "ALERT-001",
+        "type": "BRUTE_FORCE",
+        "title": "SSH Brute Force Attempt",
+        "severity": "HIGH",
+        "source_ip": "185.220.101.25",
+        "destination_ip": "10.0.2.15",
+        "username": "admin",
+        "description": "Multiple failed SSH authentication attempts detected."
+    },
+    {
+        "alert_id": "ALERT-002",
+        "type": "COMMAND_EXECUTION",
+        "title": "Suspicious PowerShell Execution",
+        "severity": "CRITICAL",
+        "source_ip": "192.168.1.50",
+        "hostname": "WORKSTATION-01",
+        "username": "admin",
+        "description": "Encoded PowerShell command execution detected."
+    },
+    {
+        "alert_id": "ALERT-003",
+        "type": "MALWARE",
+        "title": "Malware File Detected",
+        "severity": "HIGH",
+        "source_ip": "203.0.113.50",
+        "hostname": "SERVER-01",
+        "hash": "a94a8fe5ccb19ba61c4c0873d391e987",
+        "description": "Known malicious file hash identified."
+    }
+]
